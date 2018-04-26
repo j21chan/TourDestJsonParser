@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Iterator;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -25,7 +24,7 @@ public class JsonParserTest {
         conn.setRequestProperty("Content-type", "application/json");
         
         // Response 코드 출력
-        System.out.println("Response code: " + conn.getResponseCode());
+        System.out.println("Response code: " + conn.getResponseCode() + "\n");
         
         // BufferReader 객체 생성
         BufferedReader rd;
@@ -73,7 +72,16 @@ public class JsonParserTest {
                 
         // json body value
         JSONObject jsonBody = (JSONObject) jsonResponse.get("body");
-                
+        
+        // num Of rows
+        int numOfRows = Integer.parseInt(jsonBody.get("numOfRows").toString());
+        
+        // pageNo
+        int pageNo = Integer.parseInt(jsonBody.get("pageNo").toString());
+        
+        System.out.println("관광지 개수 : " + numOfRows + " 개");
+        System.out.println("페이지 : " + pageNo + "\n");
+        
         // json items value
         JSONObject jsonItems = (JSONObject) jsonBody.get("items");
         
@@ -109,7 +117,7 @@ public class JsonParserTest {
         	String title = temp.get("title").toString();
         	String zipcode = temp.get("zipcode").toString();
         	
-        	System.out.println("---- " + (i + 1) + "번째 인덱스 값 ----");
+        	System.out.println("------------ " + (i + 1) + "번째 인덱스 값 ------------");
         	System.out.println("addr1 : " + addr1);
         	System.out.println("addr2 : " + addr2);
         	System.out.println("areacode : " + areacode);
