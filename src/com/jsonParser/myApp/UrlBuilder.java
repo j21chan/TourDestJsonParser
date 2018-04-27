@@ -1,7 +1,6 @@
 package com.jsonParser.myApp;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 
 public class UrlBuilder {
 	

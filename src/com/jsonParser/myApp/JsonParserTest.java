@@ -1,10 +1,6 @@
 package com.jsonParser.myApp;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -14,61 +10,16 @@ import org.json.simple.parser.ParseException;
 public class JsonParserTest {
 	
 	// AreaBasedList URL에서 나온 JSON을 파싱해주는 메소드
-	public static void parseAreaBasedListURL (String stringURL) throws IOException, ParseException {
-		
-		// TourAPI로 보낼 URL
-        URL url = new URL("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=lXD74EVz%2B%2BsN6Umj%2FTEiUwe6SrhDlt6EJDw3EiP%2FaQ37jdWZzn2jcv0uMBf90xaYQU2taH9P2nEyEAiiS5mQrw%3D%3D&contentTypeId=12&areaCode=1&sigunguCode=&cat1=A02&cat2=A0203&cat3=A02030400&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=12&pageNo=1&_type=json");
-
-		//URL url = new URL(stringURL);
-		
-        // HttpURLConnection 연결
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        
-        // http 연결 설정을 GET 방식으로 하고 json으로 가져옴
-        conn.setRequestMethod("GET");
-        conn.setRequestProperty("Content-type", "application/json");
-        
-        // Response 코드 출력
-        System.out.println("Response code: " + conn.getResponseCode() + "\n");
-        
-        // BufferReader 객체 생성
-        BufferedReader rd;
-        
-        // Response 코드가 200 이상이거나 300 이하일 때
-        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
-            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        } else {
-            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-        }
-        
-        
-        // String Builder 객체 생성
-        StringBuilder sb = new StringBuilder();
-        String line;
-        
-        // 데이터를 읽어와서 붙힘
-        while ((line = rd.readLine()) != null) {
-            sb.append(line);
-        }
-        
-        
-        // 사용한 객체들 자원 반납
-        rd.close();
-        conn.disconnect();
-        
-        
+	public static void parseAreaBasedList (String stringJSON) throws IOException, ParseException {
         // JSON 객체 출력
         System.out.println("******** Tour API에서 받아온 JSON ********");
-        System.out.println(sb.toString() + "\n");
-        
-        // Tour API에서 가져온 JSON 파일 
-        String destJson = sb.toString();
-                
+        System.out.println(stringJSON + "\n");
+   
         // JSON Parser 객체 만들기
         JSONParser parser = new JSONParser();
         
         // TourAPI에서 받은 Json 파일을 obj로 받기
-        Object obj = parser.parse(destJson);
+        Object obj = parser.parse(stringJSON);
                 
         // Object에서 JSON으로 Type Casting
         JSONObject jsonObj = (JSONObject) obj;
@@ -152,56 +103,17 @@ public class JsonParserTest {
 	
 	
 	// AreaCode URL에서 나온 JSON을 파싱해주는 메소드
-	public static void parseAreaCodeURL (String stringURL) throws IOException, ParseException {
-		
-		// TourAPI로 보낼 URL        
-		URL url = new URL(stringURL);
-		
-        // HttpURLConnection 연결
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        
-        // http 연결 설정을 GET 방식으로 하고 json으로 가져옴
-        conn.setRequestMethod("GET");
-        conn.setRequestProperty("Content-type", "application/json");
-        
-        // Response 코드 출력
-        System.out.println("Response code: " + conn.getResponseCode() + "\n");
-        
-        // BufferReader 객체 생성
-        BufferedReader rd;
-        
-        // Response 코드가 200 이상이거나 300 이하일 때
-        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
-            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        } else {
-            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-        }
-        
-        // String Builder 객체 생성
-        StringBuilder sb = new StringBuilder();
-        String line;
-        
-        // 데이터를 읽어와서 붙힘
-        while ((line = rd.readLine()) != null) {
-            sb.append(line);
-        }
-        
-        // 사용한 객체들 자원 반납
-        rd.close();
-        conn.disconnect();
-        
+	public static void parseAreaCode (String stringJSON) throws IOException, ParseException {
+
         // JSON 객체 출력
         System.out.println("******** Tour API에서 받아온 JSON ********");
-        System.out.println(sb.toString() + "\n");
-        
-        // Tour API에서 가져온 JSON 파일 
-        String destJson = sb.toString();
-                
+        System.out.println(stringJSON + "\n");
+            
         // JSON Parser 객체 만들기
         JSONParser parser = new JSONParser();
         
         // TourAPI에서 받은 Json 파일을 obj로 받기
-        Object obj = parser.parse(destJson);
+        Object obj = parser.parse(stringJSON);
                 
         // Object에서 JSON으로 Type Casting
         JSONObject jsonObj = (JSONObject) obj;
@@ -249,56 +161,17 @@ public class JsonParserTest {
 	}
 	
 	// Sigungu URL에서 나온 JSON을 파싱해주는 메소드
-	public static void parseSigunguCodeURL (String stringURL) throws IOException, ParseException {
-		
-		// TourAPI로 보낼 URL        
-		URL url = new URL(stringURL);
-		
-        // HttpURLConnection 연결
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        
-        // http 연결 설정을 GET 방식으로 하고 json으로 가져옴
-        conn.setRequestMethod("GET");
-        conn.setRequestProperty("Content-type", "application/json");
-        
-        // Response 코드 출력
-        System.out.println("Response code: " + conn.getResponseCode() + "\n");
-        
-        // BufferReader 객체 생성
-        BufferedReader rd;
-        
-        // Response 코드가 200 이상이거나 300 이하일 때
-        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
-            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        } else {
-            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-        }
-        
-        // String Builder 객체 생성
-        StringBuilder sb = new StringBuilder();
-        String line;
-        
-        // 데이터를 읽어와서 붙힘
-        while ((line = rd.readLine()) != null) {
-            sb.append(line);
-        }
-        
-        // 사용한 객체들 자원 반납
-        rd.close();
-        conn.disconnect();
-        
+	public static void parseSigunguCode (String stringJSON) throws IOException, ParseException {
+		    
         // JSON 객체 출력
         System.out.println("******** Tour API에서 받아온 JSON ********");
-        System.out.println(sb.toString() + "\n");
+        System.out.println(stringJSON + "\n");
         
-        // Tour API에서 가져온 JSON 파일 
-        String destJson = sb.toString();
-                
         // JSON Parser 객체 만들기
         JSONParser parser = new JSONParser();
         
         // TourAPI에서 받은 Json 파일을 obj로 받기
-        Object obj = parser.parse(destJson);
+        Object obj = parser.parse(stringJSON);
                 
         // Object에서 JSON으로 Type Casting
         JSONObject jsonObj = (JSONObject) obj;
