@@ -1,0 +1,35 @@
+        	// Test 용으로 잠깐 막아둠
+//        	int contentid = Integer.parseInt(temp.get("contentid").toString());
+//        	int contenttypeid = Integer.parseInt(temp.get("contenttypeid").toString());
+//        	int createdtime = Integer.parseInt(temp.get("createdtime").toString());
+
+        	// Test 용으로 잠깐 막아둠
+//        	double mapx = Double.parseDouble(temp.get("mapx").toString());
+//        	double mapy = Double.parseDouble(temp.get("mapy").toString());
+//        	int mlevel = Integer.parseInt(temp.get("mlevel").toString());
+//        	int modifiedtime = Integer.parseInt(temp.get("modifiedtime").toString());
+//        	int readcount = Integer.parseInt(temp.get("readcount").toString());
+//        	int sigungucode = Integer.parseInt(temp.get("sigungucode").toString());
+
+
+
+
+        // 이 방법은 TourAPI에서 사용하기에는 어려운 JSON 파싱 기법
+//        System.out.println("name :: " +name);
+//        long id = (Long) jsonObj.get("id");
+//        System.out.println("id :: " + id);
+//        
+//        // Array
+//        JSONArray phoneNum = (JSONArray) jsonObj.get("phoneNumbers");
+//        Iterator<String> iterator = phoneNum.iterator();
+//        
+//        while (iterator.hasNext()) {
+//        	System.out.println("phoneNumbers :: " + iterator.next());
+//        }
+//        
+//        //Object
+//        JSONArray array = (JSONArray) jsonObj.get("address");
+//        for(int i=0; i<array.size(); i++){
+//        	JSONObject result = (JSONObject) array.get(i);
+//        	System.out.println("result :: " +result.get("zipcode"));
+//        }
