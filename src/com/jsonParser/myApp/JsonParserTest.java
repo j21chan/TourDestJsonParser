@@ -248,7 +248,7 @@ public class JsonParserTest {
         }
 	}
 	
-	
+	// Sigungu URL에서 나온 JSON을 파싱해주는 메소드
 	public static void parseSigunguCodeURL (String stringURL) throws IOException, ParseException {
 		
 		// TourAPI로 보낼 URL        

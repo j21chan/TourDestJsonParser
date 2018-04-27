@@ -18,8 +18,9 @@ public class UrlBuilder {
 	}
 	
 	// sigunguCode를 요청하는 URL Build 메소드
-	public static String sigunguCodeURLBuild (String areaCode) throws UnsupportedEncodingException {		
-		String url = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaCode" + "?ServiceKey=" + serviceKey + "&areaCode="+ areaCode + "&numOfRows=10" + "&pageNo=10" + "&MobileOS=ETC" + "&MobileApp=AppTest" + "&_type=" + type;
+	public static String sigunguCodeURLBuild (int areaCode) throws UnsupportedEncodingException {		
+		String url = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaCode" + "?ServiceKey=" + serviceKey + "&areaCode="+ areaCode + "&numOfRows=10" + "&pageNo=1" + "&MobileOS=ETC" + "&MobileApp=AppTest" + "&_type=" + type;		
+		System.out.println(url);
 		return url;
 	}
 }
