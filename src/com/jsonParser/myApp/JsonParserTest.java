@@ -53,7 +53,8 @@ public class JsonParserTest {
         
         
         // JSON 객체 출력
-//        System.out.println(sb.toString());
+        System.out.println("******** Tour API에서 받아온 JSON ********");
+        System.out.println(sb.toString() + "\n");
         
         // Tour API에서 가져온 JSON 파일 
         String destJson = sb.toString();
@@ -90,33 +91,35 @@ public class JsonParserTest {
         
         
         // items json array에 담긴 각 json 오브젝트를 빼오는 작업
+        System.out.println("******** JSON Parser를 이용해서 파싱 ********" + "\n");
         for (int i = 0; i < jsonItemArray.size(); i++) {
         	
         	// 임시 json 객체
         	JSONObject temp = (JSONObject) jsonItemArray.get(i);
         	
+        	// 각 Json 값에 대해서 값이 null이 아니면 값을 String으로 파싱해서 넣고 null이면 null 값을 넣는다.
+        	String addr1 = 			temp.get("addr1") != null ? 		temp.get("addr1").toString() : null;
+        	String addr2 = 			temp.get("addr2") != null ? 		temp.get("addr2").toString() : null;
+        	int areacode = 			temp.get("areacode") != null ? 		Integer.parseInt(temp.get("areacode").toString()) : null;
+        	String cat1 = 			temp.get("cat1") != null ? 			temp.get("cat1").toString() : null;
+        	String cat2 = 			temp.get("cat2") != null ? 			temp.get("cat2").toString() : null;
+        	String cat3 =		    temp.get("cat3") != null ? 			temp.get("cat3").toString() : null;
+        	int contentid = 		temp.get("contentid") != null ? 	Integer.parseInt(temp.get("contentid").toString()) : null;
+        	int contenttypeid = 	temp.get("contenttypeid") != null ? Integer.parseInt(temp.get("contenttypeid").toString()) : null;
+        	String createdtime = 	temp.get("createdtime") != null ? 	temp.get("createdtime").toString() : null;
+        	String firstimage = 	temp.get("firstimage") != null ? 	temp.get("firstimage").toString() : null;
+        	String firstimage2 = 	temp.get("firstimage2") != null ? 	temp.get("firstimage2").toString() : null;
+        	double mapx = 			temp.get("mapx") != null ? 			Double.parseDouble(temp.get("mapx").toString()) : null;
+        	double mapy = 			temp.get("mapy") != null ? 			Double.parseDouble(temp.get("mapy").toString()) : null;
+        	String mlevel = 		temp.get("mlevle") != null ? 		temp.get("mlevel").toString() : null;
+        	String modifiedtime = 	temp.get("modifiedtime") != null ? 	temp.get("modifiedtime").toString() : null;
+        	int readcount = 		temp.get("readcount") != null ? 	Integer.parseInt(temp.get("readcount").toString()) : null;
+        	int sigungucode = 		temp.get("sigungucode") != null ? 	Integer.parseInt(temp.get("sigungucode").toString()) : null;
+        	String tel = 			temp.get("tel") != null ? 			temp.get("tel").toString() : null;
+        	String title = 			temp.get("title") != null ? 		temp.get("title").toString() : null;
+        	String zipcode = 		temp.get("zipcode") != null ? 		temp.get("zipcode").toString() : null;
         	
-        	String addr1 = (temp.get("addr1")).toString();
-        	String addr2 = temp.get("addr2").toString();
-        	int areacode = Integer.parseInt(temp.get("areacode").toString());
-        	String cat1 = temp.get("cat1").toString();
-        	String cat2 = temp.get("cat2").toString();
-        	String cat3 = temp.get("cat3").toString();
-        	String contentid = temp.get("contentid").toString();
-        	String contenttypeid = temp.get("contenttypeid").toString();
-        	String createdtime = temp.get("createdtime").toString();
-        	String firstimage = temp.get("firstimage") != null ? temp.get("firstimage").toString() : null;
-        	String firstimage2 = temp.get("firstimage2") != null ? temp.get("firstimage2").toString() : null;
-        	String mapx = temp.get("mapx").toString();
-        	String mapy = temp.get("mapy").toString();
-        	String mlevel = temp.get("mlevle") != null ? temp.get("mlevel").toString() : null;
-        	String modifiedtime = temp.get("modifiedtime").toString();
-        	String readcount = temp.get("readcount").toString();
-        	String sigungucode = temp.get("sigungucode").toString();
-        	String tel = temp.get("tel") != null ? temp.get("tel").toString() : null;
-        	String title = temp.get("title").toString();
-        	String zipcode = temp.get("zipcode").toString();
-        	
+        	// 각 값에 대해서 출력을 한다.
         	System.out.println("------------ " + (i + 1) + "번째 인덱스 값 ------------");
         	System.out.println("addr1 : " + addr1);
         	System.out.println("addr2 : " + addr2);
@@ -140,7 +143,8 @@ public class JsonParserTest {
         	System.out.println("zipcode : " + zipcode);
         	System.out.println("");
         }
-        
+          
+        // 이 방법은 TourAPI에서 사용하기에는 어려운 JSON 파싱 기법
 //        System.out.println("name :: " +name);
 //        long id = (Long) jsonObj.get("id");
 //        System.out.println("id :: " + id);
