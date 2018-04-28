@@ -147,20 +147,20 @@ public class UrlBuilder {
 	// 키워드 검색 관광정보 조회 : 키워드 검색으로 관광지 정보를 조회하는 URL Build 메소드
 	public static String searchKeywordURLBuild (String numOfRows, String pageNo, String arrange, String contentTypeId, String keyword, String areaCode, String sigunguCode, String cat1, String cat2, String cat3) throws UnsupportedEncodingException {				
 		String url = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchKeyword" + "?ServiceKey=" + serviceKey +
-																									   "&numOfRows=" + numOfRows + 
-																									   "&pageNo=" + pageNo + 
-																									   "&arrange=" + arrange +
-																									   "&listYN=Y" +
-																									   "&MobileOS=ETC" + 
-																									   "&MobileApp=AppTest" + 
-																									   "&contentTypeId=" + contentTypeId +
-																									   "&keyword=" + URLEncoder.encode(keyword, "UTF-8") +
-																									   "&areaCode=" + areaCode +
-																									   "&sigunguCode=" + sigunguCode +
-																									   "&cat1=" + cat1 + 
-																									   "&cat2=" + cat2 + 
-																									   "&cat3=" + cat3 +
-																									   "&_type=" + type;
+																								   "&numOfRows=" + numOfRows + 
+																								   "&pageNo=" + pageNo + 
+																								   "&arrange=" + arrange +
+																								   "&listYN=Y" +
+																								   "&MobileOS=ETC" + 
+																								   "&MobileApp=AppTest" + 
+																								   "&contentTypeId=" + contentTypeId +
+																								   "&keyword=" + URLEncoder.encode(keyword, "UTF-8") +
+																								   "&areaCode=" + areaCode +
+																								   "&sigunguCode=" + sigunguCode +
+																								   "&cat1=" + cat1 + 
+																								   "&cat2=" + cat2 + 
+																								   "&cat3=" + cat3 +
+																								   "&_type=" + type;
         
 		System.out.println(url);
 		return url;
