@@ -33,5 +33,9 @@ public class TestUnit {
 		// 위치 기반 리스트 코드
 		// (String numOfRows, String pageNo, String arrange, String contentTypeId, String mapX, String mapY, String radius)
 //		JsonParserTest.parselocationBasedList((UrlRequest.urlRequest(UrlBuilder.locationBasedListURLBuild("10", "1", "A", "", "126.98277381966591", "37.55748885427912", "2000"))));
+		
+		// 키워드 기반 검색 코드
+		// (String numOfRows, String pageNo, String arrange, String contentTypeId, String keyword, String areaCode, String sigunguCode, String cat1, String cat2, String cat3)
+//		JsonParserTest.parseAreaBasedList((UrlRequest.urlRequest(UrlBuilder.searchKeywordURLBuild("10", "1", "A", "", "고궁", "", "", "", "", ""))));
 	}
 }
