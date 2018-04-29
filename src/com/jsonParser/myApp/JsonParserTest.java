@@ -258,7 +258,6 @@ public class JsonParserTest {
         	// 임시 json 객체
         	JSONObject temp = (JSONObject) jsonItemArray.get(i);
         	
-        	
         	// 1. 각 JSON 객체의 Key 값이 있는지 검사
         	// 2. 값이 있으면 파싱해서 데이터를 넣음
         	// 3. 데이터 값 출력
@@ -524,8 +523,8 @@ public class JsonParserTest {
 	}
 	
 	// AreaBasedList URL에서 나온 JSON을 파싱해주는 메소드
-		public static void parseSearchFestival (String stringJSON) throws IOException, ParseException {
-        // JSON 객체 출력
+	public static void parseSearchFestival (String stringJSON) throws IOException, ParseException {
+		// JSON 객체 출력
         System.out.println("******** Tour API에서 받아온 JSON ********");
         System.out.println(stringJSON + "\n");
    
@@ -686,8 +685,8 @@ public class JsonParserTest {
         }
 	}
 		
-		// AreaBasedList URL에서 나온 JSON을 파싱해주는 메소드
-		public static void parseSearchStay (String stringJSON) throws IOException, ParseException {
+	// AreaBasedList URL에서 나온 JSON을 파싱해주는 메소드
+	public static void parseSearchStay (String stringJSON) throws IOException, ParseException {
         // JSON 객체 출력
         System.out.println("******** Tour API에서 받아온 JSON ********");
         System.out.println(stringJSON + "\n");
@@ -852,5 +851,165 @@ public class JsonParserTest {
         	
         	System.out.println("");
         }
+	}
+		
+	// AreaBasedList URL에서 나온 JSON을 파싱해주는 메소드
+	public static void parseDetailCommon(String stringJSON) throws IOException, ParseException {
+        // JSON 객체 출력
+        System.out.println("******** Tour API에서 받아온 JSON ********");
+        System.out.println(stringJSON + "\n");
+   
+        // JSON Parser 객체 만들기
+        JSONParser parser = new JSONParser();
+        
+        // TourAPI에서 받은 Json 파일을 obj로 받기
+        Object obj = parser.parse(stringJSON);
+                
+        // Object에서 JSON으로 Type Casting
+        JSONObject jsonObj = (JSONObject) obj;
+                
+        // Json response value
+        JSONObject jsonResponse = (JSONObject) jsonObj.get("response");
+                
+        // json body value
+        JSONObject jsonBody = (JSONObject) jsonResponse.get("body");
+        
+        // num Of rows
+        int numOfRows = Integer.parseInt(jsonBody.get("numOfRows").toString());
+        
+        // pageNo
+        int pageNo = Integer.parseInt(jsonBody.get("pageNo").toString());
+        
+        System.out.println("관광지 개수 : " + numOfRows + " 개");
+        System.out.println("페이지 : " + pageNo + "\n");
+        
+        // json items value
+        JSONObject jsonItems = (JSONObject) jsonBody.get("items");
+        
+        // jsonArray item value
+        JSONObject jsonItem = (JSONObject) jsonItems.get("item");
+        
+        // items json array에 담긴 각 json 오브젝트를 빼오는 작업
+        System.out.println("******** JSON Parser를 이용해서 파싱 ********" + "\n");
+
+    	// 1. 각 JSON 객체의 Key 값이 있는지 검사
+    	// 2. 값이 있으면 파싱해서 데이터를 넣음
+    	// 3. 데이터 값 출력
+
+    	// 기본 응답
+    	if(jsonItem.containsKey("contentid")) {
+    		String contentid = jsonItem.get("contentid").toString();
+        	System.out.println("contentid : " + contentid);
+    	}
+    	
+    	if(jsonItem.containsKey("contenttypeid")) {
+    		String contenttypeid = jsonItem.get("contenttypeid").toString();
+        	System.out.println("contenttypeid : " + contenttypeid);
+    	}
+    	
+    	// 기본정보조회
+     	if(jsonItem.containsKey("createdtime")) {
+    		String createdtime = jsonItem.get("createdtime").toString();
+        	System.out.println("createdtime : " + createdtime);
+    	}
+    	
+    	if(jsonItem.containsKey("homepage")) {
+    		String homepage = jsonItem.get("homepage").toString();
+        	System.out.println("homepage : " + homepage);
+    	}
+    	
+    	if(jsonItem.containsKey("modifiedtime")) {
+    		String modifiedtime = jsonItem.get("modifiedtime").toString();
+        	System.out.println("modifiedtime : " + modifiedtime);
+    	}
+    	
+    	if(jsonItem.containsKey("tel")) {
+    		String tel = jsonItem.get("tel").toString();
+        	System.out.println("tel : " + tel);
+    	}
+    	
+    	if(jsonItem.containsKey("telname")) {
+    		String telname = jsonItem.get("telname").toString();
+        	System.out.println("telname : " + telname);
+    	}
+    	
+    	// 대표이미지 조회
+    	if(jsonItem.containsKey("firstimage")) {
+    		String firstimage = jsonItem.get("firstimage").toString();
+        	System.out.println("firstimage : " + firstimage);
+    	}
+    	
+    	// 대표이미지 조회
+    	if(jsonItem.containsKey("firstimage2")) {
+    		String firstimage2 = jsonItem.get("firstimage2").toString();
+        	System.out.println("firstimage2 : " + firstimage2);
+    	}
+    	
+    	// 지역정보조회
+    	if(jsonItem.containsKey("areacode")) {
+    		String areacode = jsonItem.get("areacode").toString();
+        	System.out.println("areacode : " + areacode);
+    	}
+    	
+    	if(jsonItem.containsKey("sigungucode")) {
+    		String sigungucode = jsonItem.get("sigungucode").toString();
+        	System.out.println("sigungucode : " + sigungucode);
+    	}
+    	
+    	// 분류코드조회
+    	if(jsonItem.containsKey("cat1")) {
+    		String cat1 = jsonItem.get("cat1").toString();
+        	System.out.println("cat1 : " + cat1);
+    	}
+    	
+    	if(jsonItem.containsKey("cat2")) {
+    		String cat2 = jsonItem.get("cat2").toString();
+        	System.out.println("cat2 : " + cat2);
+    	}
+    	
+    	if(jsonItem.containsKey("cat3")) {
+    		String cat3 = jsonItem.get("cat3").toString();
+        	System.out.println("cat3 : " + cat3);
+    	}
+    	
+    	// 주소정보조회
+    	if(jsonItem.containsKey("addr1")) {
+    		String addr1 = jsonItem.get("addr1").toString();
+        	System.out.println("addr1 : " + addr1);
+    	}
+    	
+    	if(jsonItem.containsKey("addr2")) {
+    		String addr2 = jsonItem.get("addr2").toString();
+        	System.out.println("addr2 : " + addr2);
+    	}
+    	
+    	if(jsonItem.containsKey("zipcode")) {
+    		String zipcode = jsonItem.get("zipcode").toString();
+        	System.out.println("zipcode : " + zipcode);
+    	}
+    	
+    	// 좌표정보조회
+    	if(jsonItem.containsKey("mapx")) {
+    		String mapx = jsonItem.get("mapx").toString();
+        	System.out.println("mapx : " + mapx);
+    	}
+    	
+    	if(jsonItem.containsKey("mapy")) {
+    		String mapy = jsonItem.get("mapy").toString();
+        	System.out.println("mapy : " + mapy);
+    	}
+    	
+    	if(jsonItem.containsKey("mlevel")) {
+    		String mlevel = jsonItem.get("mlevel").toString();
+        	System.out.println("mlevel : " + mlevel);
+    	}
+    	
+    	// 개요
+    	if(jsonItem.containsKey("overview")) {
+    		String overview = jsonItem.get("overview").toString();
+        	System.out.println("moverviewlevel : " + overview);
+    	}
+    	
+    	System.out.println("");
 	}
 }

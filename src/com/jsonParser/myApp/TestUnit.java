@@ -44,7 +44,10 @@ public class TestUnit {
 		
 		// 베니키아, 굿스테이, 한옥 검색 코드
 		// (String numOfRows, String pageNo, String arrange, String hanOk, String benikia, String goodStay, String areaCode, String sigunguCode)
-		JsonParserTest.parseSearchStay((UrlRequest.urlRequest(UrlBuilder.searchStayURLBuild("10", "1", "A", "", "", "1", "", ""))));
+//		JsonParserTest.parseSearchStay((UrlRequest.urlRequest(UrlBuilder.searchStayURLBuild("10", "1", "A", "", "", "1", "", ""))));
 		
+		
+		//(String contentId, String contentTypeId, String defaultYN, String firstImageYN, String areacodeYN, String catcodeYN, String addrinfoYN, String mapinfoYN, String overviewYN)
+//		JsonParserTest.parseDetailCommon((UrlRequest.urlRequest(UrlBuilder.detailCommonURLBuild("126508", "", "", "", "", "", "", "", ""))));
 	}
 }

@@ -209,19 +209,34 @@ public class UrlBuilder {
 	
 	// === 상세 정보 조회 URL  ===
 	// 상세 정보 조회 URL : 공통 정보를 조회하는 URL Build 메소드
-	public static String searchStayURLBuild (String numOfRows, String pageNo, String arrange, String hanOk, String benikia, String goodStay, String areaCode, String sigunguCode) throws UnsupportedEncodingException {				
+	public static String detailCommonURLBuild (String contentId, String contentTypeId, String defaultYN, String firstImageYN, String areacodeYN, String catcodeYN, String addrinfoYN, String mapinfoYN, String overviewYN) throws UnsupportedEncodingException {				
 		String url = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon" + "?ServiceKey=" + serviceKey +
-																								   "&numOfRows=" + numOfRows + 
-																								   "&pageNo=" + pageNo + 
-																								   "&arrange=" + arrange +
-																								   "&listYN=Y" +
 																								   "&MobileOS=ETC" + 
 																								   "&MobileApp=AppTest" + 
-																								   "&hanOk=" + hanOk +
-																								   "&benikia=" + benikia +
-																								   "&goodStay=" + goodStay +
-																								   "&areaCode=" + areaCode +
-																								   "&sigunguCode=" + sigunguCode +
+																								   "&contentId=" + contentId +
+																								   "&contentTypeId=" + contentTypeId +
+																								   "&defaultYN=" + defaultYN +
+																								   "&firstImageYN=" + firstImageYN +
+																								   "&areacodeYN=" + areacodeYN +
+																								   "&catcodeYN=" + catcodeYN +
+																								   "&addrinfoYN=" + addrinfoYN +
+																								   "&mapinfoYN=" + mapinfoYN +
+																								   "&overviewYN=" + overviewYN +
+																								   "&_type=" + type;
+        
+		System.out.println(url);
+		return url;
+	}
+	
+	// === 상세 정보 조회 URL  ===
+	// 상세 정보 조회 URL : 공통 정보를 조회하는 URL Build 메소드
+	public static String detailIntroURLBuild (String contentId, String contentTypeId, String introYN) throws UnsupportedEncodingException {				
+		String url = "	http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro" + "?ServiceKey=" + serviceKey +
+																								   "&MobileOS=ETC" + 
+																								   "&MobileApp=AppTest" + 
+																								   "&contentId=" + contentId +
+																								   "&contentTypeId=" + contentTypeId +
+																								   "&introYN=" + introYN +
 																								   "&_type=" + type;
         
 		System.out.println(url);
