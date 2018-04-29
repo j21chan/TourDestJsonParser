@@ -165,4 +165,66 @@ public class UrlBuilder {
 		System.out.println(url);
 		return url;
 	}
+	
+	// === 행사 검색 관광정보 조회 URL  ===
+	// 행사 검색 관광정보 조회 : 날짜를 기반으로 행사 정보를 조회하는 URL Build 메소드
+	public static String searchFestivalURLBuild (String numOfRows, String pageNo, String arrange, String eventStartDate, String eventEndDate, String areaCode, String sigunguCode) throws UnsupportedEncodingException {				
+		String url = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival" + "?ServiceKey=" + serviceKey +
+																								   "&numOfRows=" + numOfRows + 
+																								   "&pageNo=" + pageNo + 
+																								   "&arrange=" + arrange +
+																								   "&listYN=Y" +
+																								   "&MobileOS=ETC" + 
+																								   "&MobileApp=AppTest" + 
+																								   "&eventStartDate=" + eventStartDate +
+																								   "&eventEndDate=" + eventEndDate +
+																								   "&areaCode=" + areaCode +
+																								   "&sigunguCode=" + sigunguCode +
+																								   "&_type=" + type;
+        
+		System.out.println(url);
+		return url;
+	}
+	
+	// === 베니키아 한옥, 굿스테이 검색 관광정보 조회 URL  ===
+	// 베니키아, 한옥, 굿스테이 정보 조회 : 베니키아, 한옥, 굿스테이 조회하는 URL Build 메소드
+	public static String searchStayURLBuild (String numOfRows, String pageNo, String arrange, String hanOk, String benikia, String goodStay, String areaCode, String sigunguCode) throws UnsupportedEncodingException {				
+		String url = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchStay" + "?ServiceKey=" + serviceKey +
+																								   "&numOfRows=" + numOfRows + 
+																								   "&pageNo=" + pageNo + 
+																								   "&arrange=" + arrange +
+																								   "&listYN=Y" +
+																								   "&MobileOS=ETC" + 
+																								   "&MobileApp=AppTest" + 
+																								   "&hanOk=" + hanOk +
+																								   "&benikia=" + benikia +
+																								   "&goodStay=" + goodStay +
+																								   "&areaCode=" + areaCode +
+																								   "&sigunguCode=" + sigunguCode +
+																								   "&_type=" + type;
+        
+		System.out.println(url);
+		return url;
+	}
+	
+	// === 상세 정보 조회 URL  ===
+	// 상세 정보 조회 URL : 공통 정보를 조회하는 URL Build 메소드
+	public static String searchStayURLBuild (String numOfRows, String pageNo, String arrange, String hanOk, String benikia, String goodStay, String areaCode, String sigunguCode) throws UnsupportedEncodingException {				
+		String url = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon" + "?ServiceKey=" + serviceKey +
+																								   "&numOfRows=" + numOfRows + 
+																								   "&pageNo=" + pageNo + 
+																								   "&arrange=" + arrange +
+																								   "&listYN=Y" +
+																								   "&MobileOS=ETC" + 
+																								   "&MobileApp=AppTest" + 
+																								   "&hanOk=" + hanOk +
+																								   "&benikia=" + benikia +
+																								   "&goodStay=" + goodStay +
+																								   "&areaCode=" + areaCode +
+																								   "&sigunguCode=" + sigunguCode +
+																								   "&_type=" + type;
+        
+		System.out.println(url);
+		return url;
+	}
 }

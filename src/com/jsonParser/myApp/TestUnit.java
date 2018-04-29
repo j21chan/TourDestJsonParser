@@ -37,5 +37,14 @@ public class TestUnit {
 		// 키워드 기반 검색 코드
 		// (String numOfRows, String pageNo, String arrange, String contentTypeId, String keyword, String areaCode, String sigunguCode, String cat1, String cat2, String cat3)
 //		JsonParserTest.parseAreaBasedList((UrlRequest.urlRequest(UrlBuilder.searchKeywordURLBuild("10", "1", "A", "", "고궁", "", "", "", "", ""))));
+		
+		// 행사 날짜 검색 코드
+		// (String numOfRows, String pageNo, String arrange, String eventStartDate, String eventEndDate, String areaCode, String sigunguCode)
+//		JsonParserTest.parseSearchFestival((UrlRequest.urlRequest(UrlBuilder.searchFestivalURLBuild("10", "1", "A", "20180202", "20180430", "", ""))));
+		
+		// 베니키아, 굿스테이, 한옥 검색 코드
+		// (String numOfRows, String pageNo, String arrange, String hanOk, String benikia, String goodStay, String areaCode, String sigunguCode)
+		JsonParserTest.parseSearchStay((UrlRequest.urlRequest(UrlBuilder.searchStayURLBuild("10", "1", "A", "", "", "1", "", ""))));
+		
 	}
 }
