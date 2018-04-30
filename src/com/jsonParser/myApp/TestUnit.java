@@ -54,5 +54,8 @@ public class TestUnit {
 		// (String contentId, String contentTypeId, String introYN)
 //		JsonParserTest.parseDetailIntro((UrlRequest.urlRequest(UrlBuilder.detailIntroURLBuild("2516988", "39", "Y"))));
 		
+		// 반복정보 조회 코드
+		// (String contentId, String contentTypeId, String detailYN)
+		JsonParserTest.parseDetailInfo((UrlRequest.urlRequest(UrlBuilder.detailInfoURLBuild("142888", "32", "Y"))));
 	}
 }

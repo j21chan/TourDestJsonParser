@@ -52,7 +52,7 @@ public class JsonParserTest {
         	
         	// 임시 json 객체
         	JSONObject temp = (JSONObject) jsonItemArray.get(i);
-        	
+
         	// 1. 각 JSON 객체의 Key 값이 있는지 검사
         	// 2. 값이 있으면 파싱해서 데이터를 넣음
         	// 3. 데이터 값 출력
@@ -1711,4 +1711,318 @@ public class JsonParserTest {
 	 	}
     	System.out.println("");
 	}
+	
+	// DetailInfo URL에서 나온 JSON을 파싱해주는 메소드
+	public static void parseDetailInfo(String stringJSON) throws IOException, ParseException {
+        // JSON 객체 출력
+        System.out.println("******** Tour API에서 받아온 JSON ********");
+        System.out.println(stringJSON + "\n");
+   
+        // JSON Parser 객체 만들기
+        JSONParser parser = new JSONParser();
+        
+        // TourAPI에서 받은 Json 파일을 obj로 받기
+        Object obj = parser.parse(stringJSON);
+                
+        // Object에서 JSON으로 Type Casting
+        JSONObject jsonObj = (JSONObject) obj;
+                
+        // Json response value
+        JSONObject jsonResponse = (JSONObject) jsonObj.get("response");
+                
+        // json body value
+        JSONObject jsonBody = (JSONObject) jsonResponse.get("body");
+        
+        // num Of rows
+        int numOfRows = Integer.parseInt(jsonBody.get("numOfRows").toString());
+        
+        // pageNo
+        int pageNo = Integer.parseInt(jsonBody.get("pageNo").toString());
+        
+        System.out.println("관광지 개수 : " + numOfRows + " 개");
+        System.out.println("페이지 : " + pageNo + "\n");
+        
+        // json items value
+        JSONObject jsonItems = (JSONObject) jsonBody.get("items");
+        
+        // jsonArray item value
+        JSONArray jsonItemArray = (JSONArray) jsonItems.get("item");
+        
+        // items json array에 담긴 각 json 오브젝트를 빼오는 작업
+        System.out.println("******** JSON Parser를 이용해서 파싱 ********" + "\n");
+
+    	// 1. 각 JSON 객체의 Key 값이 있는지 검사
+    	// 2. 값이 있으면 파싱해서 데이터를 넣음
+    	// 3. 데이터 값 출력
+        
+        for(int i = 0; i < jsonItemArray.size(); i ++) {
+        	
+        	// 임시 json 객체
+        	JSONObject jsonItem = (JSONObject) jsonItemArray.get(i);
+
+        	// 1. 각 JSON 객체의 Key 값이 있는지 검사
+        	// 2. 값이 있으면 파싱해서 데이터를 넣음
+        	// 3. 데이터 값 출력
+        	System.out.println("------------ " + (i + 1) + "번째 인덱스 값 ------------");
+        	
+        	 // 기본 응답
+        	if(jsonItem.containsKey("contentid")) {
+        		String contentid = jsonItem.get("contentid").toString();
+            	System.out.println("contentid : " + contentid);
+        	}
+        	
+        	String contenttypeid = null;
+        	if(jsonItem.containsKey("contenttypeid")) {
+        		contenttypeid = jsonItem.get("contenttypeid").toString();
+            	System.out.println("contenttypeid : " + contenttypeid);
+        	}
+        	
+        	// 숙박, 여행코스를 제외한 타입
+        	if(contenttypeid.equals("12") || contenttypeid.equals("14") || contenttypeid.equals("15") ||
+        	   contenttypeid.equals("28") || contenttypeid.equals("38") || contenttypeid.equals("39")) {
+        		
+        		if(jsonItem.containsKey("fldgubun")) {
+        			String fldgubun = jsonItem.get("fldgubun").toString();
+                	System.out.println("fldgubun : " + fldgubun);
+            	}
+        		
+        		if(jsonItem.containsKey("infoname")) {
+        			String infoname = jsonItem.get("infoname").toString();
+                	System.out.println("infoname : " + infoname);
+            	}
+        		
+        		if(jsonItem.containsKey("infotext")) {
+        			String infotext = jsonItem.get("infotext").toString();
+                	System.out.println("infotext : " + infotext);
+            	}
+        		
+        		if(jsonItem.containsKey("serialnum")) {
+        			String serialnum = jsonItem.get("serialnum").toString();
+                	System.out.println("serialnum : " + serialnum);
+            	}
+        		
+        	}
+        	
+        	// 여행 코스 타입
+        	if(contenttypeid.equals("25")) {
+        		
+        		if(jsonItem.containsKey("subcontentid")) {
+        			String subcontentid = jsonItem.get("subcontentid").toString();
+                	System.out.println("subcontentid : " + subcontentid);
+            	}
+        		if(jsonItem.containsKey("subdetailalt")) {
+        			String subdetailalt = jsonItem.get("subdetailalt").toString();
+                	System.out.println("subdetailalt : " + subdetailalt);
+            	}
+        		
+        		if(jsonItem.containsKey("subdetailimg")) {
+        			String subdetailimg = jsonItem.get("subdetailimg").toString();
+                	System.out.println("subdetailimg : " + subdetailimg);
+            	}
+        		
+        		if(jsonItem.containsKey("subdetailoverview")) {
+        			String subdetailoverview = jsonItem.get("subdetailoverview").toString();
+                	System.out.println("subdetailoverview : " + subdetailoverview);
+            	}
+        		
+        		if(jsonItem.containsKey("subname")) {
+        			String subname = jsonItem.get("subname").toString();
+                	System.out.println("subname : " + subname);
+            	}
+        		
+        		if(jsonItem.containsKey("subnum")) {
+        			String subnum = jsonItem.get("subnum").toString();
+                	System.out.println("subnum : " + subnum);
+            	}
+        	}	
+        	
+        	// 숙박 타입
+        	if(contenttypeid.equals("32")) {
+        		
+        		if(jsonItem.containsKey("roomcode")) {
+        			String roomcode = jsonItem.get("roomcode").toString();
+                	System.out.println("roomcode : " + roomcode);
+            	}
+        		
+        		if(jsonItem.containsKey("roomtitle")) {
+        			String roomtitle = jsonItem.get("roomtitle").toString();
+                	System.out.println("roomtitle : " + roomtitle);
+            	}
+        		
+        		if(jsonItem.containsKey("roomsize1")) {
+        			String roomsize1 = jsonItem.get("roomsize1").toString();
+                	System.out.println("roomsize1 : " + roomsize1);
+            	}
+        		
+        		if(jsonItem.containsKey("roomcount")) {
+        			String roomcount = jsonItem.get("roomcount").toString();
+                	System.out.println("roomcount : " + roomcount);
+            	}
+        		
+        		if(jsonItem.containsKey("roombasecount")) {
+        			String roombasecount = jsonItem.get("roombasecount").toString();
+                	System.out.println("roombasecount : " + roombasecount);
+            	}
+        		
+        		if(jsonItem.containsKey("roommaxcount")) {
+        			String roommaxcount = jsonItem.get("roommaxcount").toString();
+                	System.out.println("roommaxcount : " + roommaxcount);
+            	}
+        		
+        		if(jsonItem.containsKey("roomoffseasonminfee1")) {
+        			String roomoffseasonminfee1 = jsonItem.get("roomoffseasonminfee1").toString();
+                	System.out.println("roomoffseasonminfee1 : " + roomoffseasonminfee1);
+            	}
+        		
+        		if(jsonItem.containsKey("roomoffseasonminfee2")) {
+        			String roomoffseasonminfee2 = jsonItem.get("roomoffseasonminfee2").toString();
+                	System.out.println("roomoffseasonminfee2 : " + roomoffseasonminfee2);
+            	}
+        		
+        		if(jsonItem.containsKey("roompeakseasonminfee1")) {
+        			String roompeakseasonminfee1 = jsonItem.get("roompeakseasonminfee1").toString();
+                	System.out.println("roompeakseasonminfee1 : " + roompeakseasonminfee1);
+            	}
+        		
+        		if(jsonItem.containsKey("roompeakseasonminfee2")) {
+        			String roompeakseasonminfee2 = jsonItem.get("roompeakseasonminfee2").toString();
+                	System.out.println("roompeakseasonminfee2 : " + roompeakseasonminfee2);
+            	}
+        		
+        		if(jsonItem.containsKey("roomintro")) {
+        			String roomintro = jsonItem.get("roomintro").toString();
+                	System.out.println("roomintro : " + roomintro);
+            	}
+        		
+        		if(jsonItem.containsKey("roombathfacility")) {
+        			String roombathfacility = jsonItem.get("roombathfacility").toString();
+                	System.out.println("roombathfacility : " + roombathfacility);
+            	}
+        		
+        		if(jsonItem.containsKey("roombath")) {
+        			String roombath = jsonItem.get("roombath").toString();
+                	System.out.println("roombath : " + roombath);
+            	}
+        		
+        		if(jsonItem.containsKey("roomhometheater")) {
+        			String roomhometheater = jsonItem.get("roomhometheater").toString();
+                	System.out.println("roomhometheater : " + roomhometheater);
+            	}
+        		
+        		if(jsonItem.containsKey("roomaircondition")) {
+        			String roomaircondition = jsonItem.get("roomaircondition").toString();
+                	System.out.println("roomaircondition : " + roomaircondition);
+            	}
+        		
+        		if(jsonItem.containsKey("roomtv")) {
+        			String roomtv = jsonItem.get("roomtv").toString();
+                	System.out.println("roomtv : " + roomtv);
+            	}
+        		
+        		if(jsonItem.containsKey("roompc")) {
+        			String roompc = jsonItem.get("roompc").toString();
+                	System.out.println("roompc : " + roompc);
+            	}
+        		
+        		if(jsonItem.containsKey("roomcable")) {
+        			String roomcable = jsonItem.get("roomcable").toString();
+                	System.out.println("roomcable : " + roomcable);
+            	}
+        		
+        		if(jsonItem.containsKey("roominternet")) {
+        			String roominternet = jsonItem.get("roominternet").toString();
+                	System.out.println("roominternet : " + roominternet);
+            	}
+        		
+        		if(jsonItem.containsKey("roomrefrigerator")) {
+        			String roomrefrigerator = jsonItem.get("roomrefrigerator").toString();
+                	System.out.println("roomrefrigerator : " + roomrefrigerator);
+            	}
+        		
+        		if(jsonItem.containsKey("roomtoiletries")) {
+        			String roomtoiletries = jsonItem.get("roomtoiletries").toString();
+                	System.out.println("roomtoiletries : " + roomtoiletries);
+            	}
+        		
+        		if(jsonItem.containsKey("roomsofa")) {
+        			String roomsofa = jsonItem.get("roomsofa").toString();
+                	System.out.println("roomsofa : " + roomsofa);
+            	}
+        		
+        		if(jsonItem.containsKey("roomcook")) {
+        			String roomcook = jsonItem.get("roomcook").toString();
+                	System.out.println("roomcook : " + roomcook);
+            	}
+        		
+        		if(jsonItem.containsKey("roomTable")) {
+        			String roomTable = jsonItem.get("roomTable").toString();
+                	System.out.println("roomTable : " + roomTable);
+            	}
+        		
+        		if(jsonItem.containsKey("roomhairdryer")) {
+        			String roomhairdryer = jsonItem.get("roomhairdryer").toString();
+                	System.out.println("roomhairdryer : " + roomhairdryer);
+            	}
+        		
+        		if(jsonItem.containsKey("roomsize2")) {
+        			String roomsize2 = jsonItem.get("roomsize2").toString();
+                	System.out.println("roomsize2 : " + roomsize2);
+            	}
+        		
+        		if(jsonItem.containsKey("roomimg1")) {
+        			String roomimg1 = jsonItem.get("roomimg1").toString();
+                	System.out.println("roomimg1 : " + roomimg1);
+            	}
+        		
+        		if(jsonItem.containsKey("roomimg1alt")) {
+        			String roomimg1alt = jsonItem.get("roomimg1alt").toString();
+                	System.out.println("roomimg1alt : " + roomimg1alt);
+            	}
+        		
+        		if(jsonItem.containsKey("roomimg2")) {
+        			String roomimg2 = jsonItem.get("roomimg2").toString();
+                	System.out.println("roomimg2 : " + roomimg2);
+            	}
+        		
+        		if(jsonItem.containsKey("roomimg2alt")) {
+        			String roomimg2alt = jsonItem.get("roomimg2alt").toString();
+                	System.out.println("roomimg2alt : " + roomimg2alt);
+            	}
+        		
+        		if(jsonItem.containsKey("roomimg3")) {
+        			String roomimg3 = jsonItem.get("roomimg3").toString();
+                	System.out.println("roomimg3 : " + roomimg3);
+            	}
+        		
+        		if(jsonItem.containsKey("roomimg3alt")) {
+        			String roomimg3alt = jsonItem.get("roomimg3alt").toString();
+                	System.out.println("roomimg3alt : " + roomimg3alt);
+            	}
+        		
+        		if(jsonItem.containsKey("roomimg4")) {
+        			String roomimg4 = jsonItem.get("roomimg4").toString();
+                	System.out.println("roomimg4 : " + roomimg4);
+            	}
+        		
+        		if(jsonItem.containsKey("roomimg4alt")) {
+        			String roomimg4alt = jsonItem.get("roomimg4alt").toString();
+                	System.out.println("roomimg4alt : " + roomimg4alt);
+            	}
+        		
+        		if(jsonItem.containsKey("roomimg5")) {
+        			String roomimg5 = jsonItem.get("roomimg5").toString();
+                	System.out.println("roomimg5 : " + roomimg5);
+            	}
+        		
+        		if(jsonItem.containsKey("roomimg5alt")) {
+        			String roomimg5alt = jsonItem.get("roomimg5alt").toString();
+                	System.out.println("roomimg5alt : " + roomimg5alt);
+            	}
+        	}
+        	System.out.println("");
+        }
+       
+    	System.out.println("");
+	}
+
 }
