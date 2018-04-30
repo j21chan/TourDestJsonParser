@@ -231,7 +231,7 @@ public class UrlBuilder {
 	// === 상세 정보 조회 URL  ===
 	// 상세 정보 조회 URL : 공통 정보를 조회하는 URL Build 메소드
 	public static String detailIntroURLBuild (String contentId, String contentTypeId, String introYN) throws UnsupportedEncodingException {				
-		String url = "	http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro" + "?ServiceKey=" + serviceKey +
+		String url = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro" + "?ServiceKey=" + serviceKey +
 																								   "&MobileOS=ETC" + 
 																								   "&MobileApp=AppTest" + 
 																								   "&contentId=" + contentId +
