@@ -255,4 +255,18 @@ public class UrlBuilder {
 		System.out.println(url);
 		return url;
 	}
+	
+	// 반복 정보 조회 URL : 소개 정보를 조회하는 URL Build 메소드
+	public static String detailImageURLBuild (String contentId, String contentTypeId, String imageYN) throws UnsupportedEncodingException {				
+		String url = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage" + "?ServiceKey=" + serviceKey +
+																							   	 "&MobileOS=ETC" + 
+																						   	   	 "&MobileApp=AppTest" + 
+																							   	 "&contentId=" + contentId +
+																							   	 "&contentTypeId=" + contentTypeId +
+																							   	 "&imageYN=" + imageYN +
+																							   	 "&_type=" + type;
+        
+		System.out.println(url);
+		return url;
+	}
 }

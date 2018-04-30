@@ -56,6 +56,10 @@ public class TestUnit {
 		
 		// 반복정보 조회 코드
 		// (String contentId, String contentTypeId, String detailYN)
-		JsonParserTest.parseDetailInfo((UrlRequest.urlRequest(UrlBuilder.detailInfoURLBuild("142888", "32", "Y"))));
+//		JsonParserTest.parseDetailInfo((UrlRequest.urlRequest(UrlBuilder.detailInfoURLBuild("142888", "32", "Y"))));
+		
+		// 이미지 정보 조회 코드
+		// (String contentId, String contentTypeId, String detailYN)
+//		JsonParserTest.parseDetailImage((UrlRequest.urlRequest(UrlBuilder.detailImageURLBuild("134546", "", "Y"))));
 	}
 }
